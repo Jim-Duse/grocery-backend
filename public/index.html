@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="card_auth_parent">
+    <div class="card_auth_child">
+      <h2>Login</h2>
+
+        <form id="loginForm">
+          <input id="email" type="email" placeholder="Email" required />
+          <input id="password" type="password" placeholder="Password" required />
+          <label class="eye-label">
+            <input type="checkbox" id="showPassword" onclick="password.type = this.checked ? 'text' : 'password'"/>
+            👁️
+          </label>
+          <button>Login</button>
+        </form>
+
+    <p>No account? <a href="/register.html">Join now</a></p>
+
+    </div>
+
+  </div>
+
+  <script src="/auth.js"></script>
+</body>
+</html>

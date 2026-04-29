@@ -1,0 +1,349 @@
+:root {
+  --navy: #061E29;
+  --teal-dark: #1D546D;
+  --teal: #365456;
+  --bg-light: #b6e5e5;
+  --bg-lightgreen: #00b670;
+  --bg-lightblue: #379bed;
+
+  --danger: #E56363;
+  --success: #5F9598;
+  --text-dark: #061E29;
+  --text-muted: #6B7C85;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+.logout_section {
+  text-align: right;
+  padding: 10px 20px;
+  background: rgb(243, 255, 255);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: flex-end;
+}
+.logout_section .whoami {
+  margin: 8px 10px;
+  font-weight: 600;
+  color: #4088c3;
+  font-size: 12px;
+}
+.logout_section button {
+  background: #33bcee;
+  color: white;
+}
+.app {
+  max-width: 400px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.header {
+  background: linear-gradient(
+    135deg,
+    var(--bg-lightgreen),
+    var(--bg-lightblue)
+  );
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.add-section {
+  padding: 16px;
+  background: white;
+}
+
+.add-section input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.add-section button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #33bcee;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+  background-color: #ffffff;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.item input[type="text"] {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+/* Left side text block */
+.item-main {
+  flex: 1;                 /* takes remaining space */
+  display: flex;
+  flex-direction: column;  /* stack lines */
+}
+
+/* Name + qty on same line */
+.item-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Metadata under it */
+.item-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.item-name {
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;           /* 👈 this is the magic */
+  font-weight: 500;
+}
+
+.item-qty {
+  color: #777;
+  cursor: pointer;
+}
+
+.item-name:hover {
+  text-decoration: underline;
+}
+
+.status {
+  padding: 15px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Pending */
+.item:not(.completed) .status {
+  background: rgba(255, 150, 150, 0.885); /* teal soft */
+  color: var(--teal);
+}
+
+/* Completed */
+.item.completed .status {
+  background: rgba(16, 218, 110, 0.893); /* navy soft */
+  color: var(--teal-dark);
+}
+
+.status.pending {
+  background: rgba(95,149,152,0.15);
+  color: var(--teal);
+}
+
+
+.status.completed {
+  background: rgba(29, 120, 162, 0.15);
+  color: var(--teal-dark);
+}
+
+.meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.meta {
+  margin-left: 2px;
+}
+
+.delete {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 7px;
+}
+
+.item.completed {
+  opacity: 0.6;
+}
+
+.item.completed input {
+  text-decoration: line-through;
+}
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+
+.add-form button:hover {
+  opacity: .9;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+li.bought {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.error {
+  background: #ffe6e6;
+  color: #a40000;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+li.bought {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.actions button {
+  margin-left: 6px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.card_auth_parent {
+  background-color: #b6e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+.card_auth_child {
+  position: relative;
+  background-color: white;
+  width: min(500px, 90%);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card_auth_child input[type="email"],
+.card_auth_child input[type="password"],
+.card_auth_child input[type="text"] {
+  
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #dadada;
+  margin-bottom: 10px;
+}
+.card_auth_child input[type="checkbox"] {
+  display: none;
+}
+.eye-label {
+  position: absolute;
+  right: 24px;
+  top: 53%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+.card_auth_child button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #33bcee;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.card_auth_child p {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.card_auth_child p a {
+  text-decoration: none;
+  color: #33bcee;
+}
