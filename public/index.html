@@ -11,14 +11,16 @@
   <div class="card_auth_parent">
     <div class="card_auth_child">
       <h2>Login</h2>
-
+        <div id="authMessage" class="" role="alert"></div>
         <form id="loginForm">
           <input id="email" type="email" placeholder="Email" required />
           <input id="password" type="password" placeholder="Password" required />
-          <label class="eye-label">
-            <input type="checkbox" id="showPassword" onclick="password.type = this.checked ? 'text' : 'password'"/>
-            👁️
-          </label>
+          <div class="auth_login_pview"> 
+            <h4>Show / Hide Password</h4>
+            <input type="checkbox"  id="showPassword" onclick="password.type = this.checked ? 'text' : 'password'"/>
+          </div>
+          
+          
           <button>Login</button>
         </form>
 

@@ -6,6 +6,10 @@ document.getElementById('registerForm')?.addEventListener('submit', async e => {
   const display_name = document.getElementById('display_name').value;
   const password = document.getElementById('password').value;
 
+  const authMessage = document.getElementById('authMessage');
+
+  
+
   const res = await fetch('/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -45,6 +49,16 @@ document.getElementById('loginForm')?.addEventListener('submit', async e => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
+  function showAuthMessage(message, type = 'error') {
+  authMessage.textContent = message;
+  authMessage.className = `auth-message ${type}`;
+  }
+
+  function hideAuthMessage() {
+    authMessage.textContent = '';
+    authMessage.className = 'auth-message hidden';
+  }
+
   const res = await fetch('/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -52,7 +66,8 @@ document.getElementById('loginForm')?.addEventListener('submit', async e => {
   });
 
   if (!res.ok) {
-    alert('Invalid credentials');
+    //alert('Invalid credentials');
+    showAuthMessage('Invalid email or password.');
     return;
   }
 

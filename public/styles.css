@@ -2,7 +2,8 @@
   --navy: #061E29;
   --teal-dark: #1D546D;
   --teal: #365456;
-  --bg-light: #b6e5e5;
+  /* --bg-light: #ddb584; */
+  --bg-light: #d9fbff;
   --bg-lightgreen: #00b670;
   --bg-lightblue: #379bed;
 
@@ -19,16 +20,22 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  background: var(--bg-light);
+  /* background: var(--bg-light); */
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 20%, rgba(255, 109, 201, 0.848), transparent 65%),
+    radial-gradient(ellipse 70% 60% at 20% 80%, rgba(100, 252, 255, 0.45), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 60% 65%, rgba(255, 235, 170, 0.566), transparent 62%),
+    radial-gradient(ellipse 65% 40% at 50% 60%, rgba(255, 77, 77, 0.48), transparent 68%),
+    linear-gradient(180deg, #eaffef 0%, #d9b0ff 100%);
   color: var(--text-dark);
 }
 .logout_section {
   text-align: right;
   padding: 10px 20px;
-  background: rgb(243, 255, 255);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  /* box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); */
   display: flex;
   justify-content: flex-end;
+
 }
 .logout_section .whoami {
   margin: 8px 10px;
@@ -43,10 +50,11 @@ body {
 .app {
   max-width: 400px;
   margin: 40px auto;
-  background: white;
+  background: #ffffff2c;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   overflow: hidden;
+  border: 0px solid #eaeaea;
 }
 .header {
   background: linear-gradient(
@@ -288,20 +296,19 @@ li.bought {
 }
 
 .card_auth_parent {
-  background-color: #b6e5e5;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; 
 }
 .card_auth_child {
-  position: relative;
-  background-color: white;
+  
+  background-color: #ffffffb1;
   width: min(500px, 90%);
   padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 0px solid #eaeaea;
 }
 
 .card_auth_child input[type="email"],
@@ -313,11 +320,11 @@ li.bought {
   border-radius: 6px;
   border: 1px solid #dadada;
   margin-bottom: 10px;
+  position: relative;
 }
-.card_auth_child input[type="checkbox"] {
-  display: none;
-}
+
 .eye-label {
+  background-color: #00b670;
   position: absolute;
   right: 24px;
   top: 53%;
@@ -326,7 +333,24 @@ li.bought {
   font-size: 18px;
   user-select: none;
 }
-
+.auth_login_pview {
+  background-color: #ffffff;
+  display: flex;
+  margin-bottom: 20px;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #a9a9a9;
+}
+.auth_login_pview h4 {
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px 0;
+}
+.auth_login_pview input {
+  width: auto;
+}
 .card_auth_child button {
   width: 100%;
   padding: 10px;
