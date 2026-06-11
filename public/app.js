@@ -1,4 +1,4 @@
-// 🔐 Auth guard
+//Auth guard
 const token = localStorage.getItem('token');
 if (!token) {
   window.location.href = '/';
@@ -7,20 +7,20 @@ if (!token) {
 
 document.body.style.display = 'block';
 
-// 🔎 DOM
+//DOM
 const list = document.getElementById('list');
 const form = document.getElementById('add-form');
 const nameInput = document.getElementById('name');
 const quantityInput = document.getElementById('quantity');
 const errorBox = document.getElementById('error');
 
-// 🔘 Logout
+//Logout
 document.getElementById('logoutBtn')?.addEventListener('click', () => {
   localStorage.removeItem('token');
   window.location.href = '/';
 });
 
-// ❗ Errors
+//Errors
 function showError(msg) {
   errorBox.textContent = msg;
   errorBox.classList.remove('hidden');
@@ -36,7 +36,7 @@ async function showLoggedUser() {
   el.textContent = `Welcome ${data.user.display_name}`;
 }
 
-// 🔁 authFetch
+//authFetch
 async function authFetch(url, options = {}) {
   const res = await fetch(url, {
     ...options,
@@ -50,7 +50,7 @@ async function authFetch(url, options = {}) {
   return res;
 }
 
-// 🧺 API
+//API
 const getItems = async () => (await authFetch('/items')).json();
 
 const addItem = async (name, quantity) => {
@@ -77,7 +77,7 @@ const deleteItem = async id => {
   await authFetch(`/items/${id}`, { method: 'DELETE' });
 };
 
-// ➕ Add item
+//Add item
 form.addEventListener('submit', async e => {
   e.preventDefault();
   await addItem(nameInput.value, quantityInput.value);
@@ -90,7 +90,7 @@ function formatDate(date) {
   return new Date(date).toLocaleString();
 }
 showLoggedUser();
-// 📦 Render
+//Render
 async function load() {
   const items = await getItems();
   list.innerHTML = '';
