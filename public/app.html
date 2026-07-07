@@ -31,10 +31,15 @@
     <section class="add-section">
       <form id="add-form">
         <input id="name" type="text" placeholder="Add an item..." required/>
-        <input id="quantity" type="number" placeholder="Qty (optional)" min="1" />
+        <input id="quantity" class="quantity" type="number" placeholder="Qty (optional)" min="1" />
+        <input id="avgprice" class="avgprice" type="number" placeholder="Avg Price (optional)" step="any" inputmode="decimal" />
         <button type="submit">Add</button>
       </form>
     </section>
+
+    <div class="price-estimator">
+      <p>Estimated Total: <span id="total-estimate"></span></p>
+    </div>
 
     <!-- List -->
     <section class="list" id="list">

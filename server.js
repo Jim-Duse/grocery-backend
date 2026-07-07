@@ -95,13 +95,21 @@ app.get('/items', auth, async (req, res) => {
   res.json(items.rows);
 });
 
+//Get Subtotal
+app.get('/items/subtotal', auth, async (req, res) => {
+  const subtotal = await pool.query(
+    "SELECT SUM(quantity::NUMERIC * price::NUMERIC) as total FROM grocery_items WHERE status = 'NEEDED'"
+  );
+  res.json(subtotal.rows[0]);
+});
+
 // Add item
 app.post('/items', auth, async (req, res) => {
-  const { name, quantity } = req.body;
+  const { name, quantity, avgprice } = req.body;
 
   await pool.query(
-    'INSERT INTO grocery_items (name, quantity, updated_by) VALUES ($1,$2,$3)',
-    [name, quantity, req.user.display_name]
+    'INSERT INTO grocery_items (name, quantity, price, updated_by) VALUES ($1,$2,$3,$4)',
+    [name, quantity, avgprice, req.user.display_name]
   );
 
   res.status(201).json({ message: 'Item added' });

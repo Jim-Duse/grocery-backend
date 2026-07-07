@@ -12,6 +12,7 @@ const list = document.getElementById('list');
 const form = document.getElementById('add-form');
 const nameInput = document.getElementById('name');
 const quantityInput = document.getElementById('quantity');
+const priceInput = document.getElementById('avgprice');
 const errorBox = document.getElementById('error');
 
 //Logout
@@ -50,21 +51,23 @@ async function authFetch(url, options = {}) {
   return res;
 }
 
-//API
+//API - GET ALL ITEMS
 const getItems = async () => (await authFetch('/items')).json();
 
-const addItem = async (name, quantity) => {
+//API - ADD ITEM
+const addItem = async (name, quantity, avgprice) => {
   if (!name.trim()) return showError('Item name required');
 
   await authFetch('/items', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, quantity })
+    body: JSON.stringify({ name, quantity, avgprice })
   });
 
   load();
 };
 
+//API - UPDATE STATUS
 const updateStatus = async (id, status) => {
   await authFetch(`/items/${id}`, {
     method: 'PUT',
@@ -73,27 +76,51 @@ const updateStatus = async (id, status) => {
   });
 };
 
+//API - DELETE ITEM
 const deleteItem = async id => {
   await authFetch(`/items/${id}`, { method: 'DELETE' });
 };
 
-//Add item
+//ADD ITEM EVENT LISTENER
 form.addEventListener('submit', async e => {
   e.preventDefault();
-  await addItem(nameInput.value, quantityInput.value);
+  await addItem(nameInput.value, quantityInput.value, priceInput.value);
   nameInput.value = '';
   quantityInput.value = '';
+  priceInput.value = '';
   nameInput.focus();
 });
 
+//FORMAT DATE
 function formatDate(date) {
   return new Date(date).toLocaleString();
 }
+
+//SHOW LOGGED USER
 showLoggedUser();
-//Render
+
+//FETCH SUBTOTAL
+async function fetchSubtotal() {
+  const res = await authFetch('/items/subtotal');
+  const data = await res.json();
+  const totalEstimateEl = document.getElementById('total-estimate');
+  if (!totalEstimateEl) return;
+
+  try {
+    const res = await authFetch('/items/subtotal');
+    const data = await res.json();
+    const total = Number(data.total || 0);
+    totalEstimateEl.textContent = `$${total.toFixed(2)}`;
+  } catch (err) {
+    totalEstimateEl.textContent = '$0.00';
+  }
+}
+
+//FETCH ITEMS AND RENDER
 async function load() {
-  const items = await getItems();
+  const items = await getItems(); 
   list.innerHTML = '';
+  await fetchSubtotal();
 
   if (!items.length) {
     list.innerHTML = `<div style="text-align:center;color:#aaa">No groceries yet 🧺</div>`;
