@@ -28,6 +28,9 @@ body {
     radial-gradient(ellipse 65% 40% at 50% 60%, rgba(255, 77, 77, 0.48), transparent 68%),
     linear-gradient(180deg, #eaffef 0%, #d9b0ff 100%);
   color: var(--text-dark);
+  background-repeat: no-repeat;
+  height: 100vh;
+
 }
 .logout_section {
   text-align: right;
