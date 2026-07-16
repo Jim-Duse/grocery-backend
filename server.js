@@ -108,7 +108,7 @@ app.post('/items', auth, async (req, res) => {
   const { name, quantity, avgprice } = req.body;
 
   await pool.query(
-    'INSERT INTO grocery_items (name, quantity, price, updated_by) VALUES ($1,$2,$3,$4)',
+    'INSERT INTO grocery_items (name, quantity, price, updated_by, updated_at) VALUES ($1,$2,$3,$4, NOW())',
     [name, quantity, avgprice, req.user.display_name]
   );
 
