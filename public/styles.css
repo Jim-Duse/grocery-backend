@@ -28,9 +28,8 @@ body {
     radial-gradient(ellipse 65% 40% at 50% 60%, rgba(255, 77, 77, 0.48), transparent 68%),
     linear-gradient(180deg, #eaffef 0%, #d9b0ff 100%);
   color: var(--text-dark);
-  background-repeat: no-repeat;
-  height: 100vh;
-
+  min-height: 100vh;
+  background-attachment: fixed;
 }
 .logout_section {
   text-align: right;
@@ -38,7 +37,7 @@ body {
   /* box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); */
   display: flex;
   justify-content: flex-end;
-
+  margin: 40px 0;
 }
 .logout_section .whoami {
   margin: 8px 10px;
