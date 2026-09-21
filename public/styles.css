@@ -22,10 +22,10 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   /* background: var(--bg-light); */
   background:
-    radial-gradient(ellipse 80% 60% at 60% 20%, rgba(143, 253, 255, 0.848), transparent 65%),
-    radial-gradient(ellipse 70% 60% at 20% 80%, rgba(208, 100, 255, 0.45), transparent 65%),
+    radial-gradient(ellipse 80% 60% at 60% 20%, rgba(255, 143, 169, 0.848), transparent 65%),
+    radial-gradient(ellipse 70% 60% at 20% 80%, rgba(100, 131, 255, 0.45), transparent 65%),
     radial-gradient(ellipse 60% 50% at 60% 65%, rgba(255, 235, 170, 0.566), transparent 62%),
-    radial-gradient(ellipse 65% 40% at 50% 60%, rgba(249, 22, 215, 0.48), transparent 68%),
+    radial-gradient(ellipse 65% 40% at 50% 60%, rgba(22, 230, 249, 0.48), transparent 68%),
     linear-gradient(180deg, #eaffef 0%, #ffdab0 100%);
   color: var(--text-dark);
   min-height: 100vh;
